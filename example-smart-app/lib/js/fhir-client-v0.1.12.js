@@ -16921,7 +16921,7 @@ function urlParam(p, forceArray) {
 }
 
 function stripTrailingSlash(str) {
-    if(str && (str.substr(-1) === '/')) {
+    if(str.substr(-1) === '/') {
         return str.substr(0, str.length - 1);
     }
     return str;
@@ -17256,6 +17256,7 @@ BBClient.ready = function(input, callback, errback){
 
 function providers(fhirServiceUrl, provider, callback, errback){
 
+  console.log(fhirServiceUrl);
   // Shim for pre-OAuth2 launch parameters
   if (isBypassOAuth()){
     process.nextTick(function(){
@@ -17339,6 +17340,7 @@ function bypassOAuth(fhirServiceUrl, callback){
 
 BBClient.authorize = function(params, errback){
 
+  console.log(params);
   if (!errback){
     errback = function(){
         console.log("Failed to discover authorization URL given", params);
@@ -17375,6 +17377,7 @@ BBClient.authorize = function(params, errback){
   }
 
   var server = urlParam("iss") || urlParam("fhirServiceUrl");
+  console.log(server);
   if (server){
     if (!params.server){
       params.server = server;
