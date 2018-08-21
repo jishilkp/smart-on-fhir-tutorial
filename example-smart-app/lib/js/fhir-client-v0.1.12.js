@@ -16902,9 +16902,6 @@ function urlParam(p, forceArray) {
   var query = location.search.substr(1);
   var data = query.split("&");
   var result = [];
-  console.log(query);
-  console.log(data);
-
   for(var i=0; i<data.length; i++) {
     var item = data[i].split("=");
     if (item[0] === p) {
@@ -16912,8 +16909,6 @@ function urlParam(p, forceArray) {
       result.push(decodeURIComponent(res));
     }
   }
-  console.log(result);
-
   if (forceArray) {
     return result;
   }
@@ -17259,7 +17254,6 @@ BBClient.ready = function(input, callback, errback){
 
 function providers(fhirServiceUrl, provider, callback, errback){
 
-  console.log(fhirServiceUrl);
   // Shim for pre-OAuth2 launch parameters
   if (isBypassOAuth()){
     process.nextTick(function(){
@@ -17342,8 +17336,6 @@ function bypassOAuth(fhirServiceUrl, callback){
 }
 
 BBClient.authorize = function(params, errback){
-
-  console.log(params);
   if (!errback){
     errback = function(){
         console.log("Failed to discover authorization URL given", params);
@@ -17380,7 +17372,6 @@ BBClient.authorize = function(params, errback){
   }
 
   var server = urlParam("iss") || urlParam("fhirServiceUrl");
-  console.log(server);
   if (server){
     if (!params.server){
       params.server = server;
