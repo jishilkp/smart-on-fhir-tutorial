@@ -16902,6 +16902,8 @@ function urlParam(p, forceArray) {
   var query = location.search.substr(1);
   var data = query.split("&");
   var result = [];
+  console.log(query);
+  console.log(data);
 
   for(var i=0; i<data.length; i++) {
     var item = data[i].split("=");
@@ -16910,6 +16912,7 @@ function urlParam(p, forceArray) {
       result.push(decodeURIComponent(res));
     }
   }
+  console.log(result);
 
   if (forceArray) {
     return result;
